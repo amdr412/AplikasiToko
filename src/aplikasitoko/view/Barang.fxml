@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="775.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.BarangController">
+   <children>
+      <Pane prefHeight="50.0" prefWidth="785.0" style="-fx-background-color: #2070cc;">
+         <children>
+            <Label layoutX="65.0" layoutY="59.0" text="Label" />
+            <Label layoutX="15.0" layoutY="6.0" text="Barang" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="50.0" prefHeight="50.0" prefWidth="785.0" style="-fx-background-color: #2070cc;">
+         <children>
+            <Button fx:id="btn_sub_kategori" mnemonicParsing="false" onAction="#btn_sub_kategori_action" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: #1c67bc;" text="Kategori" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_sub_produk" layoutX="193.0" mnemonicParsing="false" onAction="#btn_sub_produk_action" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Daftar Produk" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_sub_masuk" layoutX="386.0" mnemonicParsing="false" onAction="#btn_sub_masuk_action" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: transparent;" text="Barang Masuk" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_sub_keluar" layoutX="579.0" mnemonicParsing="false" onAction="#btn_sub_keluar_action" prefHeight="50.0" prefWidth="207.0" style="-fx-background-color: transparent;" text="Barang Keluar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="barang_view" layoutY="100.0" prefHeight="490.0" prefWidth="785.0" style="-fx-background-color: white;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="785.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="aplikasitoko.controller.MasukController">
+    <children>
+      <TableView layoutX="20.0" layoutY="16.0" prefHeight="385.0" prefWidth="746.0">
+        <columns>
+          <TableColumn prefWidth="128.0" text="Kode Barang" />
+          <TableColumn prefWidth="146.0" text="Kode Supplier" />
+            <TableColumn prefWidth="154.0" text="Tanggal Masuk" />
+            <TableColumn prefWidth="94.0" text="Biaya" />
+            <TableColumn prefWidth="88.0" text="Stok Masuk" />
+            <TableColumn prefWidth="135.0" text="Keterangan" />
+        </columns>
+      </TableView>
+      <Button layoutX="350.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Edit" textFill="WHITE" />
+      <Button layoutX="444.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Hapus" textFill="WHITE" />
+      <Button layoutX="256.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Tambah" textFill="WHITE" />
+   </children>
+</AnchorPane>

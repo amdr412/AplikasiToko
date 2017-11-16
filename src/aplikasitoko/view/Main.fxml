@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.MainController">
+   <children>
+      <Pane id="menupane" prefHeight="590.0" prefWidth="250.0" style="-fx-background-color: #2070cc;">
+         <children>
+            <Label alignment="CENTER" layoutX="33.0" layoutY="22.0" text="Aplikasi Toko" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="48.0" prefHeight="107.0" prefWidth="194.0" text="Trunojoyo Makmur" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_beranda" layoutX="28.0" layoutY="190.0" mnemonicParsing="false" onAction="#btn_beranda_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #1c67bc;" text="Beranda" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Separator disable="true" layoutX="28.0" layoutY="168.0" prefHeight="1.0" prefWidth="209.0" style="-fx-background-color: white;" />
+            <Button fx:id="btn_barang" layoutX="28.0" layoutY="253.0" mnemonicParsing="false" onAction="#btn_barang_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #2677d3;" text="Barang" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_customer" layoutX="28.0" layoutY="314.0" mnemonicParsing="false" onAction="#btn_customer_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #2677d3;" text="Customer" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_supplier" layoutX="28.0" layoutY="376.0" mnemonicParsing="false" onAction="#btn_supplier_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #2677d3;" text="Supplier" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_kasir" layoutX="28.0" layoutY="437.0" mnemonicParsing="false" onAction="#btn_kasir_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #2677d3;" text="Transaksi Kasir" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_pengaturan" layoutX="28.0" layoutY="497.0" mnemonicParsing="false" onAction="#btn_pengaturan_action" prefHeight="25.0" prefWidth="194.0" style="-fx-background-color: #2677d3;" text="Pengaturan" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="view" layoutX="250.0" prefHeight="590.0" prefWidth="775.0" style="-fx-background-color: white;" />
+   </children>
+</AnchorPane>
