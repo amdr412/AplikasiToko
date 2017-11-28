@@ -5,8 +5,10 @@
  */
 package aplikasitoko.controller;
 
+import aplikasitoko.model.BarangModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -30,26 +36,29 @@ public class BarangController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    Button btn_sub_kategori, btn_sub_produk, btn_sub_masuk, btn_sub_keluar;
+    public BorderPane barang_view;
 
     @FXML
-    private Pane barang_view;
+    public Button btn_produk, btn_kategori, btn_masuk, btn_keluar;
 
-    private void resetAllStyle() {
-        btnSetDefaultStyle(btn_sub_kategori);
-        btnSetDefaultStyle(btn_sub_produk);
-        btnSetDefaultStyle(btn_sub_masuk);
-        btnSetDefaultStyle(btn_sub_keluar);
-    }
+    @FXML
+    public Pane view_barang;
 
     private void btnSetDefaultStyle(Button btn) {
-        btn.fontProperty().setValue(Font.font("System", 20));
-        btn.setStyle("-fx-background-color:  transparent;");
+        btn.textFillProperty().setValue(Color.BLACK);
+        btn.setStyle("-fx-background-color: transparent;");
     }
 
     private void btnSetSelected(Button btn) {
-        btn.fontProperty().setValue(Font.font("System", 20));
-        btn.setStyle("-fx-background-color:  #1c67bc;");
+        btn.textFillProperty().setValue(Color.WHITE);
+        btn.setStyle("-fx-background-color: #3098cc;");
+    }
+
+    private void resetAllStyle() {
+        btnSetDefaultStyle(btn_produk);
+        btnSetDefaultStyle(btn_kategori);
+        btnSetDefaultStyle(btn_masuk);
+        btnSetDefaultStyle(btn_keluar);
     }
 
     private void setView(Pane pane, String url) throws IOException {
@@ -59,44 +68,39 @@ public class BarangController implements Initializable {
     }
 
     @FXML
-    private void btn_sub_kategori_action(ActionEvent event) throws IOException {
-        System.out.println("Kategori clicked me!");
+    private void btn_produk_action(ActionEvent event) throws IOException {
+        setView(view_barang, "Produk.fxml");
         resetAllStyle();
-        btnSetSelected(btn_sub_kategori);
-        setView(barang_view, "Kategori.fxml");
+        btnSetSelected(btn_produk);
     }
 
     @FXML
-    private void btn_sub_produk_action(ActionEvent event) throws IOException {
-        System.out.println("Produk clicked me!");
+    private void btn_kategori_action(ActionEvent event) throws IOException {
+        setView(view_barang, "Kategori.fxml");
         resetAllStyle();
-        btnSetSelected(btn_sub_produk);
-        setView(barang_view, "Produk.fxml");
+        btnSetSelected(btn_kategori);
     }
 
     @FXML
-    private void btn_sub_masuk_action(ActionEvent event) throws IOException {
-        System.out.println("Masuk clicked me!");
+    private void btn_masuk_action(ActionEvent event) throws IOException {
+        setView(view_barang, "Masuk.fxml");
         resetAllStyle();
-        btnSetSelected(btn_sub_masuk);
-        setView(barang_view, "Masuk.fxml");
+        btnSetSelected(btn_masuk);
     }
 
     @FXML
-    private void btn_sub_keluar_action(ActionEvent event) throws IOException {
-        System.out.println("Keluar clicked me!");
+    private void btn_keluar_action(ActionEvent event) throws IOException {
+        setView(view_barang, "Keluar.fxml");
         resetAllStyle();
-        btnSetSelected(btn_sub_keluar);
-        setView(barang_view, "Keluar.fxml");
+        btnSetSelected(btn_keluar);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
-            setView(barang_view, "Kategori.fxml");
+            setView(view_barang, "Produk.fxml");
         } catch (IOException ex) {
-            Logger.getLogger(BarangController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

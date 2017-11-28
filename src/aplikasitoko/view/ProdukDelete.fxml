@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="380.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.ProdukDeleteController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="82.0" layoutY="37.0" text="Apakah Anda yakin menghapus item ini?" />
+            <Label layoutX="83.0" layoutY="71.0" text="Kode Barang : " />
+            <Label layoutX="83.0" layoutY="98.0" text="Nama Barang : " />
+            <Label fx:id="kode_barang" layoutX="174.0" layoutY="71.0" text="kode_barang" />
+            <Label fx:id="nama_barang" layoutX="174.0" layoutY="98.0" text="nama_barang" />
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: #3098cc;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="18.0" layoutY="17.0" text="Hapus Produk" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="49.0" prefWidth="380.0" style="-fx-background-color: #3098cc;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="hapuskan" layoutX="297.0" layoutY="12.0" mnemonicParsing="false" onAction="#hapuskan_action" style="-fx-background-color: red;" text="Hapuskan" textFill="WHITE" />
+            <Button fx:id="batal" layoutX="244.0" layoutY="12.0" mnemonicParsing="false" onAction="#batal_action" style="-fx-background-color: white;" text="Batal" />
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

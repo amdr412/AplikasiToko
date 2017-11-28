@@ -6,20 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="785.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="aplikasitoko.controller.MasukController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="731.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.MasukController">
     <children>
-      <TableView layoutX="20.0" layoutY="16.0" prefHeight="385.0" prefWidth="746.0">
+      <TableView layoutX="26.0" layoutY="26.0" prefHeight="430.0" prefWidth="680.0">
         <columns>
-          <TableColumn prefWidth="128.0" text="Kode Barang" />
-          <TableColumn prefWidth="146.0" text="Kode Supplier" />
-            <TableColumn prefWidth="154.0" text="Tanggal Masuk" />
-            <TableColumn prefWidth="94.0" text="Biaya" />
-            <TableColumn prefWidth="88.0" text="Stok Masuk" />
-            <TableColumn prefWidth="135.0" text="Keterangan" />
+          <TableColumn prefWidth="89.0" text="Kode Barang" />
+          <TableColumn prefWidth="127.0" text="Kode Supplier" />
+            <TableColumn prefWidth="122.0" text="Tanggal Masuk" />
+            <TableColumn prefWidth="98.0" text="Biaya" />
+            <TableColumn prefWidth="89.0" text="Stok Masuk" />
+            <TableColumn prefWidth="154.0" text="Keterangan" />
         </columns>
       </TableView>
-      <Button layoutX="350.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Edit" textFill="WHITE" />
-      <Button layoutX="444.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Hapus" textFill="WHITE" />
-      <Button layoutX="256.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #2070cc;" text="Tambah" textFill="WHITE" />
+      <Button layoutX="323.0" layoutY="477.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3098cc;" text="Edit" textFill="WHITE" />
+      <Button layoutX="419.0" layoutY="477.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3098cc;" text="Hapus" textFill="WHITE" />
+      <Button layoutX="227.0" layoutY="477.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3098cc;" text="Tambah" textFill="WHITE" />
    </children>
 </AnchorPane>
