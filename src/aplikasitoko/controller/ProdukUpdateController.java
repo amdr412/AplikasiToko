@@ -5,6 +5,7 @@
  */
 package aplikasitoko.controller;
 
+import aplikasitoko.ValidasiField;
 import aplikasitoko.model.BarangModel;
 import aplikasitoko.object.KategoriObject;
 import aplikasitoko.object.ProdukObject;
@@ -57,16 +58,33 @@ public class ProdukUpdateController implements Initializable {
 
     @FXML
     public void editkan_action(ActionEvent event) {
-//        System.out.println();
         try {
-            System.out.println("berhasil");
-                        
-            if (produkModel.updateProdukData(ProdukController.kode_barang_pub, kode_barang.getText()+"", nama_barang.getText()+"", toKodeKategori(kategori_pilihan.getValue().toString())+"", harga_jual.getText()+"", harga_jual_grosir.getText()+"", satuan_barang.getText()+"", pajak_barang.getText()+"", keterangan_barang.getText()+"")) {
-                pesan.setText("Data berhasil diperbarui");
-                pesan.setTextFill(Color.GREEN);
-            } else {
-                pesan.setText("Data gagal diperbarui");
+            if (!ValidasiField.hasValue(kode_barang.getText())) {
+                pesan.setText("Kode Barang Wajib Diisi!");
                 pesan.setTextFill(Color.RED);
+            } else if (!ValidasiField.hasValue(nama_barang.getText())) {
+                pesan.setText("Nama Barang Wajib Diisi!");
+                pesan.setTextFill(Color.RED);
+            } else if (!ValidasiField.hasValue(harga_jual.getText())) {
+                pesan.setText("Harga Jual Wajib Diisi!");
+                pesan.setTextFill(Color.RED);
+            } else if (!ValidasiField.isNumber(harga_jual.getText())) {
+                pesan.setText("Harga Jual Harus Angka!");
+                pesan.setTextFill(Color.RED);
+            } else if (!ValidasiField.isNumber(harga_jual_grosir.getText())) {
+                pesan.setText("Harga Jual Grosir Harus Angka! Biarkan 0 bila tidak diisi");
+                pesan.setTextFill(Color.RED);
+            } else if (!ValidasiField.isNumber(pajak_barang.getText())) {
+                pesan.setText("Pajak Barang Harus Angka! Biarkan 0 bila tidak diisi");
+                pesan.setTextFill(Color.RED);
+            } else {
+                if (produkModel.updateProdukData(ProdukController.kode_barang_pub, kode_barang.getText() + "", nama_barang.getText() + "", toKodeKategori(kategori_pilihan.getValue().toString()) + "", harga_jual.getText() + "", harga_jual_grosir.getText() + "", satuan_barang.getText() + "", pajak_barang.getText() + "", keterangan_barang.getText() + "")) {
+                    pesan.setText("Data berhasil diperbarui");
+                    pesan.setTextFill(Color.GREEN);
+                } else {
+                    pesan.setText("Data gagal diperbarui");
+                    pesan.setTextFill(Color.RED);
+                }
             }
 
         } catch (SQLException ex) {
@@ -89,7 +107,7 @@ public class ProdukUpdateController implements Initializable {
         produkModel.kategoriObs.forEach((ko) -> {
             kategori_pilihan.getItems().add(ko.getKode_kategori() + " - " + ko.getNama_kategori());
         });
-        ProdukObject produk = produkModel.produkObs.get(0); 
+        ProdukObject produk = produkModel.produkObs.get(0);
         kode_barang.setText(produk.getKode_barang());
         nama_barang.setText(produk.getNama_barang());
         try {
@@ -102,6 +120,6 @@ public class ProdukUpdateController implements Initializable {
         pajak_barang.setText(produk.getPajak_barang());
         satuan_barang.setText(produk.getSatuan_barang());
         keterangan_barang.setText(produk.getKeterangan_barang());
-        
+
     }
 }

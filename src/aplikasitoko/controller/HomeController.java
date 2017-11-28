@@ -121,7 +121,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void btn_pengaturan_action(ActionEvent event) throws IOException {
-        setView(center, "Pengaturan_2.fxml");
+        setView(center, "Pengaturan.fxml");
         resetAllStyle();
         btnSetSelected(btn_pengaturan);
     }
