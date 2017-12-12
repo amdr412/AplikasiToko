@@ -30,7 +30,7 @@ import javafx.scene.text.FontWeight;
  *
  * @author LabTIA-40
  */
-public class BarangController implements Initializable {
+public class BarangController extends BaseController {
 
     /**
      * Initializes the controller class.
@@ -59,12 +59,6 @@ public class BarangController implements Initializable {
         btnSetDefaultStyle(btn_kategori);
         btnSetDefaultStyle(btn_masuk);
         btnSetDefaultStyle(btn_keluar);
-    }
-
-    private void setView(Pane pane, String url) throws IOException {
-        Pane newLoadedPane = FXMLLoader.load(getClass().getResource("/aplikasitoko/view/" + url));
-        pane.getChildren().clear();
-        pane.getChildren().add(newLoadedPane);
     }
 
     @FXML
@@ -100,7 +94,7 @@ public class BarangController implements Initializable {
         try {
             setView(view_barang, "Produk.fxml");
         } catch (IOException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

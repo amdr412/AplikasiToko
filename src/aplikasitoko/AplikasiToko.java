@@ -24,7 +24,7 @@ public class AplikasiToko extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setTitle("Aplikasi Toko");
+        stage.setTitle("Login Aplikasi Toko");
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.show();
     }

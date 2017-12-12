@@ -5,18 +5,23 @@
  */
 package aplikasitoko.controller;
 
+import aplikasitoko.lib.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -29,7 +34,7 @@ import javafx.scene.text.FontWeight;
  *
  * @author abdul
  */
-public class HomeController implements Initializable {
+public class HomeController extends BaseController {
 
     /**
      * Initializes the controller class.
@@ -44,6 +49,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private BorderPane home_pane;
+
+    @FXML
+    Label pengguna;
 
     @FXML
     private Button btn_barang, btn_customer, btn_supplier, btn_kasir, btn_laporan, btn_pengaturan;
@@ -65,12 +73,6 @@ public class HomeController implements Initializable {
         btnSetDefaultStyle(btn_kasir);
         btnSetDefaultStyle(btn_laporan);
         btnSetDefaultStyle(btn_pengaturan);
-    }
-
-    private void setView(Pane pane, String url) throws IOException {
-        Pane newLoadedPane = FXMLLoader.load(getClass().getResource("/aplikasitoko/view/" + url));
-        pane.getChildren().clear();
-        pane.getChildren().add(newLoadedPane);
     }
 
     @FXML
@@ -126,15 +128,63 @@ public class HomeController implements Initializable {
         btnSetSelected(btn_pengaturan);
     }
 
+    @FXML
+    private void logout_action(ActionEvent event) throws IOException {
+        Session.sesi = null;
+        ((Node) event.getSource()).getScene().getWindow().hide();
+        newWindow("Login.fxml", "Login Aplikasi Toko");
+    }
+
+    public void login_as_kasir() {
+        btn_customer.setDisable(false);
+        btn_kasir.setDisable(false);
+        btn_laporan.setDisable(false);
+        btn_pengaturan.setDisable(false);
+    }
+
+    public void login_as_gudang() {
+        btn_barang.setDisable(false);
+        btn_supplier.setDisable(false);
+        btn_pengaturan.setDisable(false);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         home_pane.setLeft(null);
-        try {
-            // TODO
-            setView(center, "Barang.fxml");
-        } catch (IOException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+
+        btn_barang.setDisable(true);
+        btn_customer.setDisable(true);
+        btn_supplier.setDisable(true);
+        btn_kasir.setDisable(true);
+        btn_laporan.setDisable(true);
+        btn_pengaturan.setDisable(true);
+
+        if ("1".equals(Session.sesi)) {
+            login_as_kasir();
+            try {
+                pengguna.setText("Selamat Datang, Kasir!");
+                btnSetSelected(btn_kasir);
+                setView(center, "Kasir.fxml");
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if ("2".equals(Session.sesi)) {
+            login_as_gudang();
+            try {
+                pengguna.setText("Selamat Datang, Gudang!");
+                btnSetSelected(btn_barang);
+                setView(center, "Barang.fxml");
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (Session.sesi == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Harus Login!");
+            alert.setHeaderText("Login diperlukan.");
+            alert.setContentText("Untuk mengakses aplikasi ini Anda harus login sebgai kasir atau gudang.");
+            alert.showAndWait();
+            Platform.exit();
         }
     }
 

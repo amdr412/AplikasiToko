@@ -10,19 +10,37 @@
 
 <BorderPane fx:id="home_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.HomeController">
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #42b9f4;" BorderPane.alignment="CENTER">
+      <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #42b9f4;" BorderPane.alignment="CENTER">
         <items>
             <ImageView fx:id="menu2" fitHeight="37.0" fitWidth="30.0" onMouseClicked="#menu_clicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/bar-icon.png" />
                </image>
             </ImageView>
-          <Button fx:id="btn_barang" mnemonicParsing="false" onAction="#btn_barang_action" style="-fx-background-color: #39ace5;" text="Barang" textFill="WHITE" />
-            <Button fx:id="btn_customer" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_customer_action" style="-fx-background-color: transparent;" text="Customer" />
-            <Button fx:id="btn_supplier" layoutX="66.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_supplier_action" style="-fx-background-color: transparent;" text="Supplier" />
-            <Button fx:id="btn_kasir" layoutX="122.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_kasir_action" style="-fx-background-color: transparent;" text="Transaksi Kasir" />
-            <Button fx:id="btn_laporan" layoutX="178.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_laporan_action" style="-fx-background-color: transparent;" text="Laporan" />
-            <Button fx:id="btn_pengaturan" layoutX="234.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_pengaturan_action" style="-fx-background-color: transparent;" text="Pengaturan" />
+          <Button fx:id="btn_barang" mnemonicParsing="false" onAction="#btn_barang_action" style="-fx-background-color: transparent;" text="Barang">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_supplier" layoutX="66.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_supplier_action" style="-fx-background-color: transparent;" text="Supplier">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_kasir" layoutX="122.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_kasir_action" style="-fx-background-color: transparent;" text="Transaksi Kasir">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_customer" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_customer_action" style="-fx-background-color: transparent;" text="Customer">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_laporan" layoutX="178.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_laporan_action" style="-fx-background-color: transparent;" text="Laporan">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_pengaturan" layoutX="234.0" layoutY="13.0" mnemonicParsing="false" onAction="#btn_pengaturan_action" style="-fx-background-color: transparent;" text="Pengaturan">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
         </items>
       </ToolBar>
    </top>
@@ -48,8 +66,8 @@
                   <Image url="@../img/user.png" />
                </image>
             </ImageView>
-            <Label layoutX="27.0" layoutY="272.0" text="Selamat Datang, Pengguna!" textFill="WHITE" />
-            <Button layoutX="55.0" layoutY="464.0" mnemonicParsing="false" style="-fx-background-color: #3098cc;" text="Tutup Aplikasi" textFill="WHITE" />
+            <Label fx:id="pengguna" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="272.0" prefHeight="17.0" prefWidth="165.0" text="Selamat Datang, Pengguna!" textAlignment="CENTER" textFill="WHITE" />
+            <Button layoutX="73.0" layoutY="464.0" mnemonicParsing="false" onAction="#logout_action" style="-fx-background-color: #3098cc;" text="Logout" textFill="WHITE" />
          </children></Pane>
    </left>
    <center>

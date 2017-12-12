@@ -8,11 +8,11 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="731.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.KategoriController">
    <children>
-      <TableView layoutX="26.0" layoutY="26.0" prefHeight="430.0" prefWidth="680.0">
+      <TableView fx:id="tabel_kategori" layoutX="26.0" layoutY="26.0" prefHeight="430.0" prefWidth="680.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Kode" />
-          <TableColumn prefWidth="250.0" text="Nama Kategori" />
-            <TableColumn prefWidth="420.0" text="Keterangan" />
+          <TableColumn fx:id="kode_kategori" prefWidth="75.0" text="Kode" />
+          <TableColumn fx:id="nama_kategori" minWidth="0.0" prefWidth="214.0" text="Nama Kategori" />
+            <TableColumn fx:id="keterangan_kategori" maxWidth="411.0" prefWidth="390.0" text="Keterangan" />
         </columns>
       </TableView>
       <Button fx:id="edit_kategori" layoutX="323.0" layoutY="477.0" mnemonicParsing="false" onAction="#edit_kategori_action" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #3098cc;" text="Edit" textFill="WHITE" />

@@ -73,12 +73,11 @@ public class BarangModel {
             preparedStatement = koneksi.prepareStatement(query);
 
             resultSet = preparedStatement.executeQuery();
-            String kode_kategori = null;
-            String nama_kategori = null;
             while (resultSet.next()) {
-                kode_kategori = resultSet.getString("kode_kategori");
-                nama_kategori = resultSet.getString("nama_kategori");
-                kategoriObs.add(new KategoriObject(kode_kategori, nama_kategori));
+                String kode_kategori = resultSet.getString("kode_kategori");
+                String nama_kategori = resultSet.getString("nama_kategori");
+                String keterangan_kategori = resultSet.getString("keterangan_kategori");
+                kategoriObs.add(new KategoriObject(kode_kategori, nama_kategori, keterangan_kategori));
             }
 
         } catch (SQLException e) {
@@ -90,6 +89,104 @@ public class BarangModel {
 
         Disconnect();
 //        System.out.println(kunciObs);
+    }
+
+    public void getKategoribyKodeKategori(String kode) throws SQLException {
+        Connect();
+        kategoriObs.clear();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String query = "select * from kategori where kode_kategori = ?";
+        try {
+            preparedStatement = koneksi.prepareStatement(query);
+            preparedStatement.setString(1, kode);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String kode_kategori = resultSet.getString("kode_kategori");
+                String nama_kategori = resultSet.getString("nama_kategori");
+                String keterangan_kategori = resultSet.getString("keterangan_kategori");
+                kategoriObs.add(new KategoriObject(kode_kategori, nama_kategori, keterangan_kategori));
+            }
+
+        } catch (SQLException e) {
+
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+
+        Disconnect();
+//        System.out.println(kunciObs);
+    }
+
+    public boolean insertKategoriData(String kode_kategori, String nama_kategori, String keterangan_kategori) throws SQLException {
+        Connect();
+        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+
+        String query = "INSERT INTO `kategori`(`KODE_KATEGORI`, `NAMA_KATEGORI`, `KETERANGAN_KATEGORI`) VALUES (?,?,?)";
+        try {
+            preparedStatement = koneksi.prepareStatement(query);
+            preparedStatement.setString(1, kode_kategori);
+            preparedStatement.setString(2, nama_kategori);
+            preparedStatement.setString(3, keterangan_kategori);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+
+        } finally {
+            preparedStatement.close();
+//            resultSet.close();
+        }
+        Disconnect();
+        return false;
+    }
+
+    public boolean updateKategoriData(String kode_kategori_old, String kode_kategori, String nama_kategori, String keterangan_kategori) throws SQLException {
+        Connect();
+        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+
+        String query = "UPDATE `kategori` SET `KODE_KATEGORI` = ?, `NAMA_KATEGORI` = ?, `keterangan_kategori` = ? WHERE `KODE_KATEGORI` = ?";
+        try {
+            preparedStatement = koneksi.prepareStatement(query);
+            preparedStatement.setString(1, kode_kategori);
+            preparedStatement.setString(2, nama_kategori);
+            preparedStatement.setString(3, keterangan_kategori);
+            preparedStatement.setString(4, kode_kategori_old);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+
+        } finally {
+            preparedStatement.close();
+//            resultSet.close();
+        }
+        Disconnect();
+        return false;
+    }
+
+    public boolean deleteKategori(String kode_kategori) throws SQLException {
+        Connect();
+        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+
+        String query = "DELETE FROM `kategori` WHERE `kode_kategori` = ?";
+        try {
+            preparedStatement = koneksi.prepareStatement(query);
+            preparedStatement.setString(1, kode_kategori);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+
+        } finally {
+            preparedStatement.close();
+//            resultSet.close();
+        }
+        Disconnect();
+        return false;
     }
 
     public void getBarangData() throws SQLException {
@@ -149,7 +246,6 @@ public class BarangModel {
                 String keterangan_barang = resultSet.getString("keterangan_barang");
 
                 //String kategori = getNamaKategoribyKode(kode_kategori);
-
                 produkObs.add(new ProdukObject(kode_barang, nama_kunci, kode_kategori, harga_jual, harga_jual_grosir, satuan_barang, pajak_barang, keterangan_barang));
             }
         } catch (SQLException e) {

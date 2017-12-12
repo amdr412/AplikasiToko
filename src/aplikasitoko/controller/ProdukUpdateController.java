@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
  *
  * @author abdul
  */
-public class ProdukUpdateController implements Initializable {
+public class ProdukUpdateController extends BaseController {
 
     /**
      * Initializes the controller class.
@@ -47,8 +47,6 @@ public class ProdukUpdateController implements Initializable {
 
     @FXML
     ChoiceBox kategori_pilihan;
-
-    BarangModel produkModel = new BarangModel();
 
     public String toKodeKategori(String KodeNama) {
         String[] kode = KodeNama.split("-");
@@ -78,7 +76,7 @@ public class ProdukUpdateController implements Initializable {
                 pesan.setText("Pajak Barang Harus Angka! Biarkan 0 bila tidak diisi");
                 pesan.setTextFill(Color.RED);
             } else {
-                if (produkModel.updateProdukData(ProdukController.kode_barang_pub, kode_barang.getText() + "", nama_barang.getText() + "", toKodeKategori(kategori_pilihan.getValue().toString()) + "", harga_jual.getText() + "", harga_jual_grosir.getText() + "", satuan_barang.getText() + "", pajak_barang.getText() + "", keterangan_barang.getText() + "")) {
+                if (barangModel.updateProdukData(ProdukController.kode_barang_pub, kode_barang.getText() + "", nama_barang.getText() + "", toKodeKategori(kategori_pilihan.getValue().toString()) + "", harga_jual.getText() + "", harga_jual_grosir.getText() + "", satuan_barang.getText() + "", pajak_barang.getText() + "", keterangan_barang.getText() + "")) {
                     pesan.setText("Data berhasil diperbarui");
                     pesan.setTextFill(Color.GREEN);
                 } else {
@@ -98,20 +96,20 @@ public class ProdukUpdateController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-            produkModel.getKategori();
-            produkModel.getBarangDatabyKodeBarang(ProdukController.kode_barang_pub);
+            barangModel.getKategori();
+            barangModel.getBarangDatabyKodeBarang(ProdukController.kode_barang_pub);
         } catch (SQLException ex) {
             Logger.getLogger(ProdukUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        produkModel.kategoriObs.forEach((ko) -> {
+        barangModel.kategoriObs.forEach((ko) -> {
             kategori_pilihan.getItems().add(ko.getKode_kategori() + " - " + ko.getNama_kategori());
         });
-        ProdukObject produk = produkModel.produkObs.get(0);
+        ProdukObject produk = barangModel.produkObs.get(0);
         kode_barang.setText(produk.getKode_barang());
         nama_barang.setText(produk.getNama_barang());
         try {
-            kategori_pilihan.setValue(produk.getKategori() + " - " + produkModel.getNamaKategoribyKode(produk.getKategori()));
+            kategori_pilihan.setValue(produk.getKategori() + " - " + barangModel.getNamaKategoribyKode(produk.getKategori()));
         } catch (SQLException ex) {
             Logger.getLogger(ProdukUpdateController.class.getName()).log(Level.SEVERE, null, ex);
         }

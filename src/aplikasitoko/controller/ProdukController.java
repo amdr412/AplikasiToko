@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author LabTIA-40
  */
-public class ProdukController implements Initializable {
+public class ProdukController extends BaseController {
 
     @FXML
     TableColumn kode_barang, nama_barang, kategori, harga_jual, harga_jual_grosir, pajak_barang, satuan_barang, keterangan_barang;
@@ -42,13 +42,11 @@ public class ProdukController implements Initializable {
     @FXML
     Button tambah_produk, hapus_produk, edit_produk;
 
-    BarangModel produkModel = new BarangModel();
-
     public static String kode_barang_pub, nama_barang_pub;
 
     public void isiTabelProduk() {
         try {
-            produkModel.getBarangData();
+            barangModel.getBarangData();
         } catch (SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,21 +61,13 @@ public class ProdukController implements Initializable {
         keterangan_barang.setCellValueFactory(new PropertyValueFactory<ProdukObject, String>("keterangan_barang"));
 
         tabel_produk.setEditable(false);
-        tabel_produk.setItems(produkModel.produkObs);
+        tabel_produk.setItems(barangModel.produkObs);
     }
 
     @FXML
     public void tambah_produk_action(ActionEvent event) throws IOException {
-        System.out.println("tambah");
-        Stage stage;
-        Parent root;
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("/aplikasitoko/view/ProdukCreate.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Tambah Produk");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(tambah_produk.getScene().getWindow());
-        stage.showAndWait();
+        modalPopUp("ProdukCreate.fxml", "Tambah Produk", tambah_produk.getScene().getWindow());
+        isiTabelProduk();
     }
 
     @FXML
@@ -88,16 +78,8 @@ public class ProdukController implements Initializable {
         } else {
             kode_barang_pub = produk.getKode_barang();
             nama_barang_pub = produk.getNama_barang();
-            System.out.println("hapus");
-            Stage stage;
-            Parent root;
-            stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("/aplikasitoko/view/ProdukDelete.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Hapus Produk");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(hapus_produk.getScene().getWindow());
-            stage.showAndWait();
+            modalPopUp("ProdukDelete.fxml", "Hapus Produk", hapus_produk.getScene().getWindow());
+            isiTabelProduk();
         }
     }
 
@@ -109,16 +91,8 @@ public class ProdukController implements Initializable {
         } else {
             kode_barang_pub = produk.getKode_barang();
             nama_barang_pub = produk.getNama_barang();
-            System.out.println("edit");
-            Stage stage;
-            Parent root;
-            stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("/aplikasitoko/view/ProdukUpdate.fxml"));
-            stage.setScene(new Scene(root));
-            stage.setTitle("Edit Produk");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(hapus_produk.getScene().getWindow());
-            stage.showAndWait();
+            modalPopUp("ProdukUpdate.fxml", "Edit Produk", edit_produk.getScene().getWindow());
+            isiTabelProduk();
         }
     }
 
@@ -135,7 +109,5 @@ public class ProdukController implements Initializable {
                 hapus_produk.setDisable(false);
             }
         });
-        
-        kode_barang.setMaxWidth(200);
     }
 }

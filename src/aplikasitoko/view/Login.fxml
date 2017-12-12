@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #42b9f4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplikasitoko.controller.LoginController">
+    <bottom>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #39ace5;" BorderPane.alignment="CENTER">
+            <items>
+            <Button mnemonicParsing="false" style="-fx-background-color: #3098cc;" text="Ganti Koneksi" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#tes_koneksi_action" style="-fx-background-color: green;" text="Tes Koneksi" textFill="WHITE" />
+                <Label fx:id="pesan_koneksi" text="Pesan koneksi akan muncul disini" />
+            </items>
+        </ToolBar>
+    </bottom>
+   <top>
+        <Pane prefHeight="135.0" prefWidth="600.0" style="-fx-background-color: #39ace5;" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="45.0" prefHeight="45.0" prefWidth="535.0" text="Aplikasi Toko" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+   </top>
+   <center>
+          <TabPane prefHeight="220.0" prefWidth="616.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                  <Tab closable="false" text="Login Kasir">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                  <Label layoutX="252.0" layoutY="34.0" text="Login Kasir" textFill="WHITE">
+                                      <font>
+                                          <Font size="20.0" />
+                                      </font>
+                                  </Label>
+                                  <PasswordField fx:id="password_kasir" layoutX="215.0" layoutY="78.0" prefHeight="36.0" prefWidth="172.0" promptText="Password Kasir" style="-fx-background-color: white;" />
+                                  <Button layoutX="277.0" layoutY="143.0" mnemonicParsing="false" onAction="#login_kasir_action" style="-fx-background-color: #39ace5;" text="Login" textFill="WHITE" />
+                                  <Label fx:id="pesan_kasir" alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="120.0" prefHeight="17.0" prefWidth="216.0" text="Pesan kesalahan akan muncul disini" textAlignment="CENTER" />
+                              </children>
+                          </AnchorPane>
+                      </content>
+                  </Tab>
+                  <Tab closable="false" text="Login Gudang">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                  <Label layoutX="238.0" layoutY="36.0" text="Login Gudang" textFill="WHITE">
+                                      <font>
+                                          <Font size="20.0" />
+                                      </font>
+                                  </Label>
+                                  <PasswordField fx:id="password_gudang" layoutX="215.0" layoutY="78.0" prefHeight="36.0" prefWidth="172.0" promptText="Password Gudang" style="-fx-background-color: white;" />
+                                  <Button layoutX="277.0" layoutY="143.0" mnemonicParsing="false" onAction="#login_gudang_action" style="-fx-background-color: #39ace5;" text="Login" textFill="WHITE" />
+                                  <Label fx:id="pesan_gudang" alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="120.0" prefHeight="17.0" prefWidth="216.0" text="Pesan kesalahan akan muncul disini" textAlignment="CENTER" />
+                              </children>
+                          </AnchorPane>
+                      </content>
+                  </Tab>
+              </tabs>
+          </TabPane>
+   </center>
+</BorderPane>

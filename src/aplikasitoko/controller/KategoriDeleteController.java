@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -21,31 +22,35 @@ import javafx.stage.Stage;
  *
  * @author abdul
  */
-public class ProdukDeleteController extends BaseController{
+public class KategoriDeleteController extends BaseController {
 
     /**
      * Initializes the controller class.
      */
     @FXML
-    Label kode_barang, nama_barang;
-    
+    Label kode_kategori, nama_kategori, pesan;
+
     @FXML
-    public void hapuskan_action(ActionEvent event) throws SQLException{
-        barangModel.deleteProdukData(ProdukController.kode_barang_pub);
-        ((Node) event.getSource()).getScene().getWindow().hide();
+    public void hapuskan_action(ActionEvent event) throws SQLException {
+        if (barangModel.deleteKategori(KategoriController.kode_kategori_pub)) {
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        }else{
+            pesan.setText("Kategori tidak bisa dihapus.");
+            pesan.setTextFill(Color.RED);
+        }
     }
 
     @FXML
-    public void batal_action(ActionEvent event){
+    public void batal_action(ActionEvent event) {
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        kode_barang.setText(ProdukController.kode_barang_pub);
-        nama_barang.setText(ProdukController.nama_barang_pub);
-    }    
-    
+
+        kode_kategori.setText(KategoriController.kode_kategori_pub);
+        nama_kategori.setText(KategoriController.nama_kategori_pub);
+    }
+
 }

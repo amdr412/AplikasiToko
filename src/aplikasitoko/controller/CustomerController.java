@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author abdul
  */
-public class CustomerController implements Initializable {
+public class CustomerController extends BaseController{
 
     /**
      * Initializes the controller class.
